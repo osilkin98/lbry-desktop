@@ -16,6 +16,7 @@ type Props = {
     outpoint: number,
     download_path: string,
     completed: boolean,
+    status: string,
   },
   loading: boolean,
   costInfo: ?{},
@@ -32,6 +33,7 @@ class FileDownloadLink extends React.PureComponent<Props> {
       !downloading &&
       fileInfo &&
       !fileInfo.completed &&
+      !fileInfo.status === 'stopped' &&
       fileInfo.written_bytes !== false &&
       fileInfo.written_bytes < fileInfo.total_bytes
     ) {

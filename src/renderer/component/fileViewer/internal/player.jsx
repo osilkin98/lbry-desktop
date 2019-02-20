@@ -38,81 +38,15 @@ class MediaPlayer extends React.PureComponent {
   }
 
   componentDidMount() {
-    const container = this.media;
-    const {
-      downloadCompleted,
-      contentType,
-      changeVolume,
-      volume,
-      position,
-      claim,
-      onStartCb,
-      onFinishCb,
-      savePosition,
-    } = this.props;
-
-    const loadedMetadata = () => {
-      this.setState({ hasMetadata: true, startedPlaying: true });
-
-      if (onStartCb) {
-        onStartCb();
-      }
-      this.media.children[0].play();
-    };
-
-    const renderMediaCallback = error => {
-      if (error) this.setState({ unplayable: true });
-    };
-
-    // Handle fullscreen change for the Windows platform
-    const win32FullScreenChange = () => {
-      const win = remote.BrowserWindow.getFocusedWindow();
-      if (process.platform === 'win32') {
-        win.setMenu(document.webkitIsFullScreen ? null : remote.Menu.getApplicationMenu());
-      }
-    };
-
-    // use renderAudio override for mp3
-    if (MediaPlayer.MP3_CONTENT_TYPES.indexOf(contentType) > -1) {
-      this.renderAudio(container, null, false);
-    }
-    // Render custom viewer: FileRender
-    else if (this.fileType()) {
-      downloadCompleted && this.renderFile();
-    }
-    // Render default viewer: render-media (video, audio, img, iframe)
-    else {
-      player.append(
-        this.file(),
-        container,
-        { autoplay: true, controls: true },
-        renderMediaCallback.bind(this)
-      );
-    }
-
-    document.addEventListener('keydown', this.togglePlayListener);
-    const mediaElement = this.media.children[0];
-    if (mediaElement) {
-      if (position) {
-        mediaElement.currentTime = position;
-      }
-      mediaElement.addEventListener('timeupdate', () => savePosition(mediaElement.currentTime));
-      mediaElement.addEventListener('click', this.togglePlayListener);
-      mediaElement.addEventListener('loadedmetadata', loadedMetadata.bind(this), {
-        once: true,
-      });
-      mediaElement.addEventListener('ended', () => {
-        if (onFinishCb) {
-          onFinishCb();
-        }
-        savePosition(0);
-      });
-      mediaElement.addEventListener('webkitfullscreenchange', win32FullScreenChange.bind(this));
-      mediaElement.addEventListener('volumechange', () => {
-        changeVolume(mediaElement.volume);
-      });
-      mediaElement.volume = volume;
-      mediaElement.addEventListener('dblclick', this.toggleFullScreenVideo);
+    const { hasMetadata } = this.state;
+    this.playMedia();
+    if (!hasMetadata) {
+      setTimeout(() => {
+        this.refreshMetadata();
+        this.forceUpdate();
+      }, 2000);
+    } else {
+      this.forceUpdate();
     }
   }
 
@@ -149,6 +83,75 @@ class MediaPlayer extends React.PureComponent {
     }
   }
 
+  playMedia() {
+    const { hasMetadata } = this.state;
+
+    const container = this.media;
+    const {
+      downloadCompleted,
+      contentType,
+      changeVolume,
+      volume,
+      position,
+      claim,
+      onStartCb,
+      onFinishCb,
+      savePosition,
+    } = this.props;
+
+    const renderMediaCallback = error => {
+      if (error) this.setState({ unplayable: true });
+    };
+
+    // Handle fullscreen change for the Windows platform
+    const win32FullScreenChange = () => {
+      const win = remote.BrowserWindow.getFocusedWindow();
+      if (process.platform === 'win32') {
+        win.setMenu(document.webkitIsFullScreen ? null : remote.Menu.getApplicationMenu());
+      }
+    };
+
+    // use renderAudio override for mp3
+    if (MediaPlayer.MP3_CONTENT_TYPES.indexOf(contentType) > -1) {
+      this.renderAudio(container, null, false);
+    }
+    // Render custom viewer: FileRender
+    else if (this.fileType()) {
+      downloadCompleted && this.renderFile();
+    }
+    // Render default viewer: render-media (video, audio, img, iframe)
+    else {
+      player.append(
+        this.file(),
+        container,
+        { autoplay: true, controls: true },
+        renderMediaCallback.bind(this)
+      );
+    }
+
+    const mediaElement = container.children[0];
+    if (mediaElement) {
+      if (position) {
+        //        mediaElement.currentTime = position;
+      }
+      container.addEventListener('loadedmetadata', () => this.refreshMetadata(), true);
+      mediaElement.addEventListener('timeupdate', () => savePosition(mediaElement.currentTime));
+      mediaElement.addEventListener('click', this.togglePlayListener);
+      mediaElement.addEventListener('ended', () => {
+        if (onFinishCb) {
+          onFinishCb();
+        }
+        savePosition(0);
+      });
+      mediaElement.addEventListener('webkitfullscreenchange', win32FullScreenChange.bind(this));
+      mediaElement.addEventListener('volumechange', () => {
+        changeVolume(mediaElement.volume);
+      });
+      mediaElement.volume = volume;
+      mediaElement.addEventListener('dblclick', this.toggleFullScreenVideo);
+    }
+  }
+
   toggleFullScreen(event) {
     const mediaElement = this.media.children[0];
     if (mediaElement) {
@@ -158,6 +161,16 @@ class MediaPlayer extends React.PureComponent {
         mediaElement.webkitRequestFullScreen();
       }
     }
+  }
+
+  refreshMetadata() {
+    const { onStartCb } = this.props;
+    this.setState({ hasMetadata: true, startedPlaying: true });
+
+    if (onStartCb) {
+      onStartCb();
+    }
+    this.media.children[0].play();
   }
 
   togglePlay(event) {
@@ -300,6 +313,8 @@ class MediaPlayer extends React.PureComponent {
     } else if (isLbryPackage && !isLoadingFile) {
       loader.loadingStatus = false;
     }
+
+    //Retry file if metadata is loadingStatus
 
     return loader;
   }

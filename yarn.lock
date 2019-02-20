@@ -5660,27 +5660,28 @@ lazy-val@^1.0.3:
     tar-stream "^1.6.2"
     zstd-codec "^0.1.1"
 
-lbry-redux@lbryio/lbry-redux#2b725cb31729234ba73117e2a74688b8bba26e7c:
+lbry-redux@lbryio/lbry-redux#3ab065b11a52d3e2e6a50a25459f9ff0aac03b13:
   version "0.0.1"
-  resolved "https://codeload.github.com/lbryio/lbry-redux/tar.gz/2b725cb31729234ba73117e2a74688b8bba26e7c"
+  resolved "https://codeload.github.com/lbryio/lbry-redux/tar.gz/3ab065b11a52d3e2e6a50a25459f9ff0aac03b13"
   dependencies:
     proxy-polyfill "0.1.6"
     reselect "^3.0.0"
     uuid "^3.3.2"
 
-lbry-redux@lbryio/lbry-redux#84b7d396934d57a37802aadbef71db91230a9404:
+lbry-redux@lbryio/lbry-redux#76d8bbef9640bf8ea5c4f45550e55b77d3944ee3:
   version "0.0.1"
-  resolved "https://codeload.github.com/lbryio/lbry-redux/tar.gz/84b7d396934d57a37802aadbef71db91230a9404"
+  resolved "https://codeload.github.com/lbryio/lbry-redux/tar.gz/76d8bbef9640bf8ea5c4f45550e55b77d3944ee3"
   dependencies:
     proxy-polyfill "0.1.6"
     reselect "^3.0.0"
     uuid "^3.3.2"
 
-lbryinc@lbryio/lbryinc#60d80401891743f991c040bafa8e51da7e939777:
+lbryinc@lbryio/lbryinc#2334ad53e82c22d6291899785d5292347008f2a9:
   version "0.0.1"
-  resolved "https://codeload.github.com/lbryio/lbryinc/tar.gz/60d80401891743f991c040bafa8e51da7e939777"
+  resolved "https://codeload.github.com/lbryio/lbryinc/tar.gz/2334ad53e82c22d6291899785d5292347008f2a9"
   dependencies:
-    lbry-redux lbryio/lbry-redux#84b7d396934d57a37802aadbef71db91230a9404
+    bluebird "^3.5.1"
+    lbry-redux lbryio/lbry-redux#76d8bbef9640bf8ea5c4f45550e55b77d3944ee3
     reselect "^3.0.0"
 
 lcid@^1.0.0:
