@@ -25,7 +25,7 @@ const downloadDaemon = targetPlatform =>
     const daemonFilePath = path.join(daemonDir, daemonFileName);
     const daemonVersionPath = path.join(__dirname, 'daemon.ver');
     const tmpZipPath = path.join(__dirname, '..', 'dist', 'daemon.zip');
-    const daemonURL = "http://build.lbry.io/daemon/build-9584_commit-be4a96c_branch-master/lbrynet-mac.zip"
+    const daemonURL = "http://build.lbry.io/daemon/build-9584_commit-be4a96c_branch-master/lbrynet-windows.zip"
 
     // If a daemon and daemon.ver exists, check to see if it matches the current daemon version
     const hasDaemonDownloaded = fs.existsSync(daemonFilePath);
