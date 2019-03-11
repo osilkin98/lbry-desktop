@@ -63,7 +63,7 @@ class RewardsPage extends PureComponent<Props> {
             )}
           </p>
           <p>
-            {`${__('If you continue to see this message, send us an email to help@lbry.io.')} ${__(
+            {`${__('If you continue to see this message, send us an email to help@lbry.com.')} ${__(
               'Please enjoy free content in the meantime!'
             )}`}
           </p>

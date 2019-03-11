@@ -109,7 +109,7 @@ class ModalWalletEncrypt extends React.PureComponent<Props, State> {
             <Button
               button="link"
               label={__('Learn more')}
-              href="https://lbry.io/faq/wallet-encryption"
+              href="https://lbry.com/faq/wallet-encryption"
             />
             .
           </p>

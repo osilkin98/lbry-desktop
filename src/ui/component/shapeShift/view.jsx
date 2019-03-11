@@ -78,7 +78,7 @@ class ShapeShift extends React.PureComponent<Props> {
 
           <p className="card__subtitle">
             {__('Powered by ShapeShift. Read our FAQ')}{' '}
-            <Button button="link" label={__('here')} href="https://lbry.io/faq/shapeshift" />.
+            <Button button="link" label={__('here')} href="https://lbry.com/faq/shapeshift" />.
             {hasActiveShift && shiftState !== 'complete' && (
               <span>{__('This will update automatically.')}</span>
             )}

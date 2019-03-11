@@ -56,11 +56,11 @@ addons:
 env:
   global:
   - ARTIFACTS_REGION=us-east-1
-  - ARTIFACTS_BUCKET=build.lbry.io
+  - ARTIFACTS_BUCKET=build.lbry.com
   - DANGER_GITHUB_API_TOKEN=f8b612049cbda985c251e18ae36c7a2b9c6c92df
   - ARTIFACTS_DEBUG=1
-  - WIN_CSC_LINK=https://s3.amazonaws.com/files.lbry.io/cert/win-csc-2018-2019-08.p12
-  - CSC_LINK=https://s3.amazonaws.com/files.lbry.io/cert/osx-cert.p12
+  - WIN_CSC_LINK=https://s3.amazonaws.com/files.lbry.com/cert/win-csc-2018-2019-08.p12
+  - CSC_LINK=https://s3.amazonaws.com/files.lbry.com/cert/osx-cert.p12
     #AWS_SECRET_ACCESS_KEY
   - secure: aF0dZ1ub0r6X5SaTH7YYRpV8cl2gkU2tA7y2tkvGZQL0+Vv2FvkhwaXREa9IM9djm7r3W7I8vEekk6Skn300kIBwQ04COxgu+Oeqjsc2a529wmF9AN5EwKExKkVQFIjMjpMBmd/fE05PD29C0vULdtIMX8uhDe5zFE+tGD1QmwKVZ+55oCxJmt7vsQwQr46s/BsPODrZhvSUPWTUG4HSsc5DJwe/XYY+35vWQsnpCkBVabAZg+lnOpqLioRNzTsBX1oSkqTX9uvOC6fN+NlpbJWetzXsBciFcMHQCx9UHxu+Ibn3W3V8FVYRuFLAinhIg+JoVQHU8mH60ggjizATpgx12riP9e/Uwho5x5bgIYmnIBf4AHqupPv40iC/THMvsS08hCQHicu+/WiAvvN8wNQ1sqpj0+RTreB+4/qdRdwTs70t4jNV83cP+nAuekMCC7uYQ08GLmFNaa+x8NgDZa3JQv7EmXU0ALWVPeJ9UEV+dhEs5iI+7bLEhTUOuvBBWo17F4pst3pfS1j7md1x4wKFRWyP7IFmjK+L1KiAH94c/LIz2Nlp5yCDfbcwU5W/wCHYAxu5c8qnAlkxeub0GpxtZ66j6oOehk1lsHYxaZcBxyn7XhM1A6Mjxgy9OG0WGyYun8iH3aa4WcY0BO21l7je75s7l0qNSRS80st8kUE=
     #AWS_ACCESS_KEY_ID
