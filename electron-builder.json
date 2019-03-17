@@ -83,7 +83,10 @@
   },
   "nsis": {
     "perMachine": true,
-    "createDesktopShortcut": "always"
+    "createDesktopShortcut": "always",
+    "unicode": true,
+    "differentialPackage": true,
+    "allowToChangeInstallationDirectory": true
   },
   "win": {
     "target": [
