@@ -1,6 +1,6 @@
 {
   "name": "LBRY",
-  "version": "0.29.5-rc.3",
+  "version": "0.29.5-rc.4",
   "description": "A browser for the LBRY network, a digital marketplace controlled by its users.",
   "keywords": [
     "lbry"
@@ -79,8 +79,8 @@
     "devtron": "^1.4.0",
     "dom-scroll-into-view": "^1.2.1",
     "electron": "4.1.0",
-    "electron-builder": "^20.38.4",
-    "electron-devtools-installer": "^2.2.4",
+    "electron-builder": "^20.39.0",
+    "electron-devtools-installer": "^2.2.3",
     "electron-is-dev": "^0.3.0",
     "electron-publisher-s3": "^20.8.1",
     "electron-webpack": "^2.6.2",
