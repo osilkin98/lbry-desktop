@@ -85,8 +85,7 @@
     "perMachine": true,
     "createDesktopShortcut": "always",
     "unicode": true,
-    "differentialPackage": true,
-    "allowToChangeInstallationDirectory": true
+    "differentialPackage": true
   },
   "win": {
     "target": [
