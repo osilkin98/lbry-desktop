@@ -1,6 +1,8 @@
 // @flow
 import * as React from 'react';
 import relativeDate from 'tiny-relative-date';
+// import Button from 'component/button';
+import UriIndicator from 'component/uriIndicator';
 
 type CommentListProps = {
   comments: Array<any>,
@@ -12,10 +14,13 @@ type CommentListProps = {
 type CommentProps = {
   commentId: string,
   claimId: string,
-  author: string,
-  message: string,
-  parentId: number,
+  channelName: string,
+  channelUri: string,
+  comment: string,
+  parentId: string,
   timePosted: number,
+  signature: string,
+  isValidSignature: boolean,
 };
 
 class CommentList extends React.PureComponent<CommentListProps> {
@@ -41,13 +46,16 @@ class CommentList extends React.PureComponent<CommentListProps> {
           {comments.map(comment => {
             return (
               <Comment
-                author={comment.channel_name}
-                claimId={comment.channel_id}
+                comment={comment.comment}
                 commentId={comment.comment_id}
-                key={comment.channel_id + comment.comment_id}
-                message={comment.comment}
-                parentId={comment.parent_id || null}
+                claimId={comment.claim_id}
+                channelName={comment.channel_name}
+                channelUri={comment.channel_url}
+                parentId={comment.parent_id}
+                key={comment.comment_id}
                 timePosted={comment.timestamp * 1000}
+                signature={comment.signature}
+                isValidSignature={comment.is_channel_signature_valid}
               />
             );
           })}
@@ -57,18 +65,25 @@ class CommentList extends React.PureComponent<CommentListProps> {
   }
 }
 
+function channelLink(comment) {
+  return (
+    <UriIndicator uri={comment.channelUri} link>
+      {comment.channelName}
+    </UriIndicator>
+  );
+}
+
 class Comment extends React.PureComponent<CommentProps> {
   render() {
     return (
       <li className={this.props.parentId ? 'comment reply' : 'comment'}>
         <div className="comment__meta card__actions--between">
-          {this.props.author && <strong>{this.props.author}</strong>}
-          {!this.props.author && <strong>Anonymous</strong>}
-
+          {this.props.channelUri && this.props.channelName && <strong>{channelLink(this.props)}</strong>}
+          {(!this.props.channelName || !this.props.channelUri) && <strong>Anonymous</strong>}
           <time dateTime={this.props.timePosted}>{relativeDate(this.props.timePosted)}</time>
         </div>
 
-        <div className="comment__content">{this.props.message}</div>
+        <div className="comment__content">{this.props.comment}</div>
         {/* The following is for adding threaded replies, upvoting and downvoting */}
         {/* <div className="comment__actions card__actions--between"> */}
         {/*  <button className={'button button--primary'}>Reply</button> */}
