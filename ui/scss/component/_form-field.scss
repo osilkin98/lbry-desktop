@@ -1,0 +1,123 @@
+// lbry/components overrides and minor styles
+// Some items have very specific styling
+// This is because many styles inside `lbry/components/sass/form/` are very specific
+// As styles become hardened here, they _should_ slowly move over to that repo
+
+input-submit {
+  align-items: center;
+}
+
+input[type='number'] {
+  width: 8em;
+}
+
+fieldset-group {
+  + fieldset-group {
+    margin-top: var(--spacing-small);
+  }
+
+  &.fieldset-group--smushed {
+    justify-content: flex-start;
+
+    fieldset-section {
+      width: auto;
+      margin: 0;
+
+      &:first-child {
+        input,
+        select {
+          border-right: none;
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
+        }
+      }
+
+      &:nth-of-type(2) {
+        input,
+        select {
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
+        }
+      }
+    }
+
+    &.fieldgroup--paginate {
+      padding-bottom: var(--spacing-large);
+      margin-top: var(--spacing-large);
+      align-items: flex-end;
+      justify-content: center;
+    }
+  }
+
+  // This is a special case where the prefix appears "inside" the input
+  // It would be way simpler to just use position: absolute and give it a width
+  // but the width can change when we use it for the name prefix
+  // lbry:// {input}, lbry://@short {input}, @lbry://longername {input}
+  // The spacing/alignment isn't very robust and will probably need to be changed
+  // if we use this in more places
+  &.fieldset-group--disabled-prefix {
+    align-items: flex-end;
+
+    label {
+      min-height: 18px;
+      white-space: nowrap;
+      // Set width 0 and overflow visible so the label can act as if it's the input label and not a random text node in a side by side div
+      overflow: visible;
+      width: 0;
+    }
+
+    fieldset-section:first-child {
+      .form-field__prefix {
+        white-space: nowrap;
+        padding: 0.5rem;
+        padding-right: var(--spacing-xxs);
+        height: var(--height-input);
+        padding-right: 1rem;
+        border: 1px solid;
+        border-top-left-radius: var(--border-radius);
+        border-bottom-left-radius: var(--border-radius);
+        border-right: 0;
+        border-color: var(--color-input-border);
+        color: var(--color-input-placeholder);
+        background-color: var(--color-input-bg);
+      }
+    }
+
+    fieldset-section:last-child {
+      width: 100%;
+
+      input {
+        border-left: 0;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        border-color: var(--color-input-border);
+        padding-left: 0;
+      }
+    }
+  }
+}
+
+.form-field--copyable {
+  padding: 0.2rem 0.75rem;
+  text-overflow: ellipsis;
+  user-select: text;
+  cursor: default;
+}
+
+.form-field__help {
+  @extend .help;
+  margin-top: var(--spacing-miniscule);
+  margin-bottom: var(--spacing-small);
+}
+
+.form-field--short {
+  width: 25em;
+}
+
+.form-field--price-amount {
+  width: 7em;
+}
+
+.form-field--address {
+  min-width: 18em;
+}

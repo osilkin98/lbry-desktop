@@ -1,0 +1,106 @@
+.file-render {
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+  max-height: var(--inline-player-max-height);
+}
+
+.file-render__viewer {
+  width: 100%;
+  height: 100%;
+
+  iframe,
+  webview,
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  video {
+    cursor: pointer;
+  }
+}
+
+.file-render__viewer--document {
+  @extend .file-render__viewer;
+  overflow: auto;
+  background-color: var(--color-file-viewer-background);
+
+  .markdown-preview {
+    height: 100%;
+    overflow: auto;
+    padding: var(--spacing-large);
+  }
+}
+
+.file-render__viewer--pdf {
+  @extend .file-render__viewer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5em;
+}
+
+.file-render__content {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+//
+// Custom viewers live below here
+// These either have custom class names that can't be changed or have styles that need to be overridden
+//
+
+// Code-viewer
+.CodeMirror {
+  @extend .file-render__content;
+
+  .cm-invalidchar {
+    display: none;
+  }
+
+  .CodeMirror .CodeMirror-lines {
+    // is there really a .CodeMirror inside a .CodeMirror?
+    padding: var(--spacing-small) 0;
+  }
+
+  .CodeMirror-code {
+    @include font-mono;
+    letter-spacing: 0.1rem;
+  }
+
+  .CodeMirror-gutters {
+    background-color: black; //gray-1;
+    border-right: 1px solid black; //gray-2;
+    padding-right: var(--spacing-medium);
+  }
+
+  .CodeMirror-line {
+    padding-left: var(--spacing-medium);
+  }
+
+  .CodeMirror-linenumber {
+    color: black; //gray-5;
+  }
+}
+
+.video-js {
+  height: 100%;
+  width: 100%;
+
+  // Removing the play button because we have autoplay turned on
+  // These are classes added by video.js
+  .vjs-big-play-button {
+    display: none;
+  }
+
+  .vjs-modal-dialog .vjs-modal-dialog-content {
+    position: relative;
+    padding-top: 5rem;
+    // Make sure no videojs message interferes with overlaying buttons
+    pointer-events: none;
+  }
+}

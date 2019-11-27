@@ -1,0 +1,97 @@
+.wunderbar {
+  flex: 1;
+  height: 100%;
+  cursor: text;
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  font-size: var(--font-small);
+
+  @media (max-width: 600px) {
+    margin-right: 0;
+  }
+
+  > .icon {
+    top: 0;
+    left: var(--spacing-small);
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+    stroke: var(--color-input-placeholder);
+  }
+}
+
+.wunderbar--inline {
+  @extend .wunderbar;
+  flex: 0;
+  margin-right: 0;
+  color: black; //black;
+
+  fieldset-section {
+    width: 15rem;
+  }
+}
+
+.wunderbar__active-suggestion {
+  color: var(--color-search-suggestion);
+  background-color: var(--color-search-suggestion-background);
+}
+
+.wunderbar__input {
+  width: 100%;
+  align-items: center;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  height: var(--height-input);
+  border-radius: var(--height-input);
+  background-color: var(--color-input-bg);
+  color: var(--color-input);
+  border: none;
+  padding-right: var(--spacing-small);
+  padding-left: 2.5rem;
+  transition: all 0.2s;
+
+  &:focus {
+    border-radius: var(--border-radius);
+  }
+}
+
+.wunderbar__menu {
+  min-width: 100%;
+  overflow: hidden;
+  background-color: var(--color-input-bg);
+  margin-top: -4px;
+}
+
+.wunderbar__suggestion {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-items: flex-start;
+  padding: var(--spacing-small) var(--spacing-small);
+
+  &:not(:first-of-type) {
+    border-top: 1px solid transparent;
+  }
+
+  .icon {
+    flex-shrink: 0;
+  }
+}
+
+.wunderbar__suggestion-label {
+  overflow: hidden;
+  padding-left: var(--spacing-small);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.wunderbar__suggestion-label--action {
+  margin-left: var(--spacing-medium);
+  opacity: 0.6;
+  white-space: nowrap;
+}

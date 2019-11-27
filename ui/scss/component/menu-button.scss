@@ -1,0 +1,74 @@
+// Extends reach-ui menu button base stylesheet
+/* Used to detect in JavaScript if apps have loaded styles or not. */
+:root {
+  --reach-menu-button: 1;
+}
+
+[data-reach-menu] {
+  font-family: sans-serif;
+  display: block;
+  position: absolute;
+  z-index: 2;
+  font-size: var(--font-body);
+}
+
+[data-reach-menu-list] {
+  display: block;
+  white-space: nowrap;
+  outline: none;
+  background-color: var(--color-menu-background);
+  border-top: none;
+}
+
+[data-reach-menu-item] {
+  display: block;
+  z-index: 2;
+}
+
+[data-reach-menu-item] {
+  cursor: pointer;
+  display: block;
+  color: inherit;
+  font: inherit;
+  text-decoration: initial;
+
+  .icon {
+    stroke: var(--color-menu-icon);
+  }
+}
+
+[data-reach-menu-item][data-selected] {
+  background-color: var(--color-menu-background--active);
+  box-shadow: none;
+
+  .icon {
+    stroke: var(--color-menu-icon-active);
+  }
+}
+
+.menu__list--header {
+  margin-top: 19px;
+  margin-left: calc(var(--spacing-medium) * -1);
+  box-shadow: var(--card-box-shadow--attached) var(--color-box-shadow);
+  animation: menu-animate-in var(--animation-duration) var(--animation-style);
+}
+
+.menu__link {
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-medium);
+  padding-right: var(--spacing-large);
+}
+
+.menu__link {
+  .icon {
+    stroke: var(--color-menu-icon);
+    margin-right: var(--spacing-small);
+  }
+}
+
+.menu__title {
+  span {
+    margin-left: var(--spacing-miniscule);
+  }
+}

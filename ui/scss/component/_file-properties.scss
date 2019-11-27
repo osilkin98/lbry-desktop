@@ -1,0 +1,29 @@
+.file-properties {
+  display: flex;
+  position: relative;
+  align-items: center;
+  font-size: var(--font-small);
+  color: var(--color-text-help);
+
+  .icon {
+    margin-bottom: -1px;
+    stroke: var(--color-subtitle);
+  }
+
+  & > *:not(:last-child) {
+    margin-right: var(--spacing-small);
+  }
+
+  @media (max-width: 600px) {
+    display: none;
+  }
+}
+
+.file-properties--large {
+  flex-wrap: wrap;
+  margin-bottom: var(--spacing-large);
+
+  & > * {
+    margin-top: var(--spacing-small);
+  }
+}

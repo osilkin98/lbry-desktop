@@ -17,7 +17,7 @@ const { ifProduction } = getIfUtils(NODE_ENV);
 let mainConfig = {
   target: 'electron-main',
   entry: {
-    main: './src/platforms/electron/index.js',
+    main: './electron/index.js',
   },
   output: {
     filename: '[name].js',
@@ -82,7 +82,7 @@ if (process.env.NODE_ENV === 'production') {
 const renderConfig = {
   target: 'electron-renderer',
   entry: {
-    ui: ['./src/ui/index.jsx'],
+    ui: ['./ui/index.jsx'],
   },
   output: {
     filename: '[name].js',

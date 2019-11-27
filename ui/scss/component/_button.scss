@@ -1,0 +1,61 @@
+.button {
+  display: inline-block;
+  font-weight: var(--font-weight-base);
+}
+
+.button--uri-indicator {
+  @extend .button--link;
+  max-width: 100%;
+  height: 1.2em;
+  vertical-align: text-top;
+  text-align: left;
+  text-overflow: ellipsis;
+  transition: color 0.2s;
+
+  .markdown-preview & {
+    height: initial;
+    vertical-align: initial;
+  }
+}
+
+.button--close {
+  z-index: 1;
+  position: absolute;
+  top: var(--spacing-miniscule);
+  right: var(--spacing-miniscule);
+  padding: 0.3rem;
+  transition: all var(--transition-duration) var(--transition-style);
+  border-radius: var(--card-radius);
+  color: var(--color-text);
+
+  &:hover {
+    color: var(--color-button-primary-text);
+    background-color: var(--color-button-primary-bg);
+  }
+}
+
+.button--download-link {
+  .button__label {
+    white-space: normal;
+    text-align: left;
+  }
+}
+
+.button__content {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  height: 100%;
+}
+
+.button__label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// Handle icons on the left or right side of the button label
+svg + .button__label,
+.button__label + svg {
+  margin-left: var(--spacing-small);
+}

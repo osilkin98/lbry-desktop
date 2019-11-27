@@ -1,0 +1,30 @@
+.icon__wrapper {
+  background-color: var(--color-primary-alt);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  margin-top: 0;
+  margin-bottom: 0;
+  height: 3.5rem;
+  width: 3.5rem;
+  border-radius: calc(3.5rem / 2);
+  position: relative;
+
+  .icon {
+    position: absolute;
+    stroke: var(--color-primary);
+  }
+}
+
+.icon--help {
+  margin-left: var(--spacing-small);
+  top: 0.2rem;
+  opacity: 0.7;
+  height: 1rem;
+  width: 1rem;
+}
+
+.icon--hidden {
+  margin-right: var(--spacing-small);
+}

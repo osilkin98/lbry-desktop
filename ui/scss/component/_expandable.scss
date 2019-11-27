@@ -1,0 +1,14 @@
+.expandable--closed,
+.expandable--open {
+  margin-bottom: var(--spacing-small);
+}
+
+.expandable--closed {
+  max-height: 10rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.expandable--open {
+  max-height: 100%;
+}

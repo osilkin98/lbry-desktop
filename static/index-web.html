@@ -2,49 +2,19 @@
 <html>
   <head>
     <meta charset="utf-8" />
+    <script src="/ui.js" async></script>
     <!-- VARIABLE_HEAD_BEGIN -->
     <title>lbry.tv</title>
-    <meta property="og:url" content="https://beta.lbry.tv" />
+    <meta property="og:url" content="https://lbry.tv" />
     <meta property="og:title" content="lbry.tv" />
-    <meta property="og:site_name" content="lbry.tv"/>
-    <meta property="og:description" content="All your favorite LBRY content in your browser." />
-    <meta property="og:image" content="https://beta.lbry.tv/og.png" />
+    <meta property="og:site_name" content="lbry.tv" />
+    <meta property="og:description" content="Meet LBRY, a content platform owned by everyone (and no one)." />
+    <meta property="og:image" content="https://lbry.tv/og.png" />
     <meta property="fb:app_id" content="1673146449633983" />
     <!-- VARIABLE_HEAD_END -->
   </head>
 
   <body>
     <div id="app"></div>
-    <script>
-      window.i18n_messages = {};
-
-      function loadUi () {
-        const script = document.createElement('script');
-        script.setAttribute('src', '/ui.js');
-        document.body.appendChild(script);
-      }
-
-      let lang;
-      try {
-        lang = window.localStorage.getItem('language') || 'en';
-      } catch {
-        lang = 'en';
-      }
-      if (lang && lang != 'en') {
-        fetch('https://lbry.com/i18n/get/lbry-desktop/app-strings/' + lang + '.json')
-                .then(r => r.json())
-                .then(j => { window.i18n_messages[lang] = j; loadUi(); })
-                .catch(loadUi);
-      } else {
-        loadUi();
-      }
-    </script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <script>
-      (adsbygoogle = window.adsbygoogle || []).push({
-        google_ad_client: "ca-pub-7620985872686147",
-        enable_page_level_ads: true
-      });
-    </script>
   </body>
 </html>

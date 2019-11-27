@@ -1,0 +1,113 @@
+//  M E D I A
+//  T H U M B
+
+.media__thumb {
+  @include thumbnail;
+  border-radius: var(--card-radius);
+  object-fit: cover;
+
+  &:not(.media__thumb--nsfw) {
+    background-color: var(--color-placeholder-background);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+
+.media__thumb--nsfw {
+  background-color: black; //grape-5;
+  // background-image: linear-gradient(to bottom right, black; //teal-3, black; //grape-5 100%);
+}
+
+//  M E D I A
+//  T I T L E
+
+.media__title {
+  margin-bottom: var(--spacing-medium);
+}
+
+.media__title-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: var(--font-weight-bold);
+  white-space: normal;
+  font-size: var(--font-title);
+  display: inline;
+}
+
+.media__title-price {
+  float: right;
+  margin-left: var(--spacing-small);
+  margin-top: 5px;
+}
+
+.media__uri {
+  position: absolute;
+  transform: translateY(-130%);
+  font-size: var(--font-xsmall);
+  color: var(--color-text-subtitle);
+}
+
+.media__uri--inline {
+  @extend .media__uri;
+  position: relative;
+  transform: none;
+}
+
+.media__uri--large {
+  margin-bottom: var(--spacing-medium);
+}
+
+.media__insufficient-credits {
+  padding: 10px;
+}
+
+//  M E D I A
+//  S U B T I T L E
+
+.media__subtitle {
+  align-self: flex-start;
+  color: var(--color-text-subtitle);
+
+  svg {
+    stroke: var(--color-text-subtitle);
+  }
+}
+
+.media__subtitle--between {
+  @extend .media__subtitle;
+  display: flex;
+  justify-content: space-between;
+}
+
+.media__subtitle--large {
+  display: block;
+
+  > button {
+    display: block;
+  }
+}
+
+.media__subtitle__channel {
+  font-weight: var(--font-weight-bold);
+  margin: var(--spacing-small) 0;
+}
+
+.media__info-text {
+  word-break: break-word;
+
+  &:not(:last-of-type) {
+    margin-bottom: var(--spacing-medium);
+  }
+
+  &.media__info-text--constrained {
+    max-width: 50rem;
+  }
+}
+
+.media__actions {
+  @extend .section__actions;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0;
+}

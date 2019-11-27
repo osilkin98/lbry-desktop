@@ -1,0 +1,64 @@
+// Both of these should probably die and become variables as well
+$spacing-vertical: 2rem;
+$spacing-width: 36px;
+
+$medium-breakpoint: 1279px;
+$large-breakpoint: 1921px;
+
+:root {
+  // Width & spacing
+  --page-max-width: 1420px;
+  --mac-titlebar-height: 1.5rem;
+  --mobile: 600px;
+  --side-nav-width: 170px;
+  --spacing-miniscule: calc(2rem / 5);
+  --spacing-tiny: calc(2rem / 4);
+  --spacing-small: calc(2rem / 3);
+  --spacing-medium: calc(2rem / 2);
+  --spacing-large: 2rem;
+  --spacing-xlarge: 3rem;
+  --spacing-main-padding: var(--spacing-xlarge);
+  --file-page-max-width: 1787px;
+  --file-max-height: 788px;
+  --file-max-width: 1400px;
+  --floating-viewer-width: 32rem;
+  --floating-viewer-height: 18rem; // 32 * 9/16
+  --floating-viewer-info-height: 5rem;
+  --floating-viewer-container-height: calc(var(--floating-viewer-height) + var(--floating-viewer-info-height));
+
+  // Text
+  --text-max-width: 660px;
+  --text-link-padding: 4px;
+
+  // Tabs
+  --tab-indicator-size: 0.5rem;
+
+  // Header
+  --header-height: 5rem;
+
+  // Inline Player
+  --inline-player-max-height: calc(100vh - var(--header-height) - var(--spacing-large) * 2);
+
+  // Card
+  --card-radius: var(--border-radius);
+  --card-max-width: 1000px;
+  --card-box-shadow: 0px 2px 6px 0px;
+  --card-box-shadow--attached: 0px 4px 6px 0px;
+
+  // Modal
+  --modal-width: 440px;
+
+  // Animation :)
+  --animation-duration: 0.2s;
+  --animation-style: ease-in-out;
+
+  // Image
+  --thumbnail-preview-height: 100px;
+  --thumbnail-preview-width: 177px;
+  --cover-photo-height: 180px;
+  --channel-thumbnail-width: 10rem;
+  --channel-thumbnail-width--small: 4rem;
+  --file-list-thumbnail-width: 10rem;
+
+  --tag-height: 1.5rem;
+}

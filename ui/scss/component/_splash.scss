@@ -1,0 +1,67 @@
+.splash {
+  width: 100vw;
+  height: 100vh;
+
+  align-items: center;
+  background-color: var(--color-background--splash);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.splash__button {
+  border-bottom: 1px solid black; //white;
+  color: black; //white;
+  transition: none;
+
+  &:hover {
+    border-bottom: 1px solid black; //blue-1;
+    color: black; //blue-1;
+  }
+}
+
+.splash__details {
+  position: absolute;
+  line-height: 1;
+  font-weight: var(--font-weight-light);
+  color: #fff;
+  margin-top: 2rem;
+}
+
+.splash__title {
+  position: absolute;
+  font-size: 40px;
+  line-height: 1;
+  font-weight: var(--font-weight-bold);
+  color: #fff;
+  margin-top: -1rem;
+}
+
+.splash__animation-toggle {
+  position: fixed;
+  top: var(--spacing-large);
+  right: var(--spacing-large);
+  padding: var(--spacing-medium);
+  border-color: #fff;
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.205);
+  font-size: var(--font-small);
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+    .icon {
+      stroke: #fff;
+    }
+  }
+}
+
+.splash__error {
+  position: absolute;
+  margin-top: 20rem;
+  background-color: #fff;
+}
+
+.doodle {
+  position: fixed;
+}
