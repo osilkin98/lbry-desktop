@@ -28,6 +28,7 @@ import FourOhFourPage from 'page/fourOhFour';
 import SignInPage from 'page/signIn';
 import SignInVerifyPage from 'page/signInVerify';
 import ChannelsPage from 'page/channels';
+import EmbedWrapperPage from 'page/embedWrapper';
 
 // Tell the browser we are handling scroll restoration
 if ('scrollRestoration' in history) {
@@ -73,6 +74,14 @@ function AppRouter(props: Props) {
     window.scrollTo(0, currentScroll);
   }, [currentScroll, pathname]);
 
+  // react-router doesn't decode pathanmes before doing the route matching check
+  // We have to redirect here because if we redirect on the server, it might get encoded again
+  // in the browser causing a redirect loop
+  const decodedPathname = decodeURIComponent(pathname);
+  if (decodedPathname !== pathname) {
+    return <Redirect to={decodedPathname} />;
+  }
+
   return (
     <Switch>
       <Route path={`/`} exact component={HomePage} />
@@ -104,6 +113,9 @@ function AppRouter(props: Props) {
       <PrivateRoute {...props} path={`/$/${PAGES.BLOCKED}`} component={ListBlockedPage} />
       <PrivateRoute {...props} path={`/$/${PAGES.WALLET}`} exact component={WalletPage} />
       <PrivateRoute {...props} path={`/$/${PAGES.CHANNELS}`} component={ChannelsPage} />
+
+      <Route path={`/$/${PAGES.EMBED}/:claimName`} exact component={EmbedWrapperPage} />
+      <Route path={`/$/${PAGES.EMBED}/:claimName/:claimId`} exact component={EmbedWrapperPage} />
 
       {/* Below need to go at the end to make sure we don't match any of our pages first */}
       <Route path="/:claimName" exact component={ShowPage} />

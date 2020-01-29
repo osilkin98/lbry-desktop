@@ -11,6 +11,9 @@ import SubscribeButton from 'component/subscribeButton';
 import useGetThumbnail from 'effects/use-get-thumbnail';
 import { formatLbryUrlForWeb } from 'util/url';
 import { parseURI } from 'lbry-redux';
+import FileProperties from 'component/fileProperties';
+
+import FileDownloadLink from 'component/fileDownloadLink';
 
 type Props = {
   uri: string,
@@ -147,7 +150,20 @@ function ClaimPreviewTile(props: Props) {
       })}
     >
       <NavLink {...navLinkProps}>
-        <FileThumbnail thumbnail={thumbnailUrl} />
+        <FileThumbnail thumbnail={thumbnailUrl}>
+          {!isChannel && (
+            <React.Fragment>
+              {/* @if TARGET='app' */}
+              <div className="claim-tile__hover-actions">
+                <FileDownloadLink uri={uri} hideOpenButton />
+              </div>
+              {/* @endif */}
+              <div className="claim-tile__file-properties">
+                <FileProperties uri={uri} small />
+              </div>
+            </React.Fragment>
+          )}
+        </FileThumbnail>
       </NavLink>
       <NavLink {...navLinkProps}>
         <h2 className="claim-tile__title">
@@ -166,7 +182,9 @@ function ClaimPreviewTile(props: Props) {
           </div>
         ) : (
           <React.Fragment>
-            <ChannelThumbnail thumbnailPreview={channelThumbnail} />
+            <UriIndicator uri={uri} link hideAnonymous>
+              <ChannelThumbnail thumbnailPreview={channelThumbnail} />
+            </UriIndicator>
 
             <div className="claim-tile__about">
               <UriIndicator uri={uri} link />

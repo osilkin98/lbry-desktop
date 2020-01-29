@@ -43,6 +43,7 @@
     "postinstall:warning": "echo '\n\nWARNING\n\nNot all node modules were installed because NODE_ENV is set to \"production\".\nThis should only be set after installing dependencies with \"yarn\". The app will not work.\n\n'"
   },
   "dependencies": {
+    "@octokit/rest": "^16.40.0",
     "auto-launch": "^5.0.5",
     "electron-dl": "^1.11.0",
     "electron-log": "^2.2.12",
@@ -50,7 +51,8 @@
     "electron-updater": "^4.1.2",
     "express": "^4.17.1",
     "if-env": "^1.0.4",
-    "keytar": "^4.4.1"
+    "keytar": "^4.4.1",
+    "node-wget": "^0.4.3"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
@@ -127,7 +129,7 @@
     "imagesloaded": "^4.1.4",
     "json-loader": "^0.5.4",
     "lbry-format": "https://github.com/lbryio/lbry-format.git",
-    "lbry-redux": "lbryio/lbry-redux#968686be689fbaf5ba2033ad0a106907320570b9",
+    "lbry-redux": "lbryio/lbry-redux#71e85536dbe397df98a47a3c4b4311760b2e7419",
     "lbryinc": "lbryio/lbryinc#6a59102c52673502569d2c43bd4ee58c315fb2e4",
     "lint-staged": "^7.0.2",
     "localforage": "^1.7.1",

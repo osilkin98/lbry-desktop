@@ -288,9 +288,11 @@
   margin-left: var(--spacing-medium);
   justify-content: flex-start;
 
-  &:first-child,
-  &:nth-child(5n) {
-    margin-left: 0;
+  @media (min-width: $breakpoint-medium) {
+    &:first-child,
+    &:nth-child(5n) {
+      margin-left: 0;
+    }
   }
 
   &:hover {
@@ -303,6 +305,13 @@
   }
 
   @media (max-width: $breakpoint-medium) {
+    width: calc((100% - var(--spacing-medium) * 2) / 3);
+
+    &:first-child,
+    &:nth-child(3n + 1) {
+      margin-left: 0;
+    }
+
     .channel-thumbnail {
       display: none;
     }
@@ -312,20 +321,20 @@
     width: calc((100% - var(--spacing-medium) * 1) / 2);
     margin-bottom: var(--spacing-large);
 
-    .channel-thumbnail {
-      display: none;
-    }
-
     &:first-child,
     &:nth-child(2n + 1) {
       margin-left: 0;
+    }
+
+    .channel-thumbnail {
+      display: none;
     }
   }
 }
 
 .claim-tile__title {
-  margin: var(--spacing-small);
   margin-bottom: 0;
+  margin: var(--spacing-small);
   font-weight: 600;
   font-size: var(--font-small);
   color: var(--color-text);
@@ -357,7 +366,7 @@
 }
 
 .claim-tile__publishes {
-  font-size: var(--font-small);
+  font-size: var(--font-xsmall);
 }
 
 .claim-tile__about--channel {
@@ -368,4 +377,39 @@
   align-items: center;
   height: 2.1rem;
   font-size: var(--font-body);
+}
+
+.claim-tile__file-properties {
+  position: absolute;
+  bottom: var(--spacing-miniscule);
+  right: var(--spacing-miniscule);
+  background-color: var(--color-black);
+  padding: 0.2rem;
+  border-radius: var(--border-radius);
+
+  .file-properties {
+    color: var(--color-white);
+  }
+}
+
+.claim-preview--tile {
+  .claim-tile__hover-actions {
+    display: none;
+    position: absolute;
+    top: var(--spacing-miniscule);
+    right: var(--spacing-miniscule);
+
+    & > * {
+      color: var(--color-black);
+      background-color: var(--color-white);
+      padding: var(--spacing-xsmall);
+      border-radius: var(--border-radius);
+    }
+  }
+
+  &:hover {
+    .claim-tile__hover-actions {
+      display: block;
+    }
+  }
 }
